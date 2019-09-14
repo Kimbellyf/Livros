@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_add_lista_desejo_finalm"
+        android:icon="@drawable/ic_is_favorite_24dp"
+        android:orderInCategory="301"
+        android:title="@string/action_add_fav_book"
+        app:showAsAction="always"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_delete_item_lista_finalm"
+        android:icon="@drawable/ic_delete_24dp"
+        android:orderInCategory="301"
+        android:title="@string/action_delete_item_lista"
+        app:showAsAction="always"
+        android:visible="true"/>
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_menu_share_white"
+        android:title="Compartilhar"
+        android:visible="true"/>
+    <item
+        android:id="@+id/action_send_selec"
+        android:icon="@drawable/ic_menu_send_white"
+        android:orderInCategory="308"
+        app:itemIconTint="@color/colorWhite"
+        android:title="Send"
+        android:visible="false"/>
+
+</menu>

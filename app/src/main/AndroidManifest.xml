@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.example.livros">
+
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Abaixo permissao para ler o estado da rede -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Abaixo permissao utilizada para o Google Maps salvar info no SD card, como por exemplo: fazer cache do mapas -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Abaixo para fazer a leitura dos dados do SD card -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- Abaixo permissao para acessar os serviços do Google -->
+    <uses-permission android:name="com.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <dist:module dist:instant="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_novo_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_novo_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".TesteTabsActivity"
+            android:label="@string/title_activity_teste_tabs"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".View.TesteNavActivity"
+            android:label="@string/title_activity_teste_nav"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".View.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".View.BookListActivity" />
+        <activity android:name=".View.BookDetailsActivity" />
+        <activity android:name=".View.FavListActivity" />
+        <activity android:name=".View.MainActivity" />
+    </application>
+
+</manifest>

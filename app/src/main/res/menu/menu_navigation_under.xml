@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/action_all_books"
+            android:title="@string/ic_all_books"
+            android:icon="@drawable/ic_books_stack_of_three"
+            app:showAsAction="always|withText"
+
+            />
+        <item
+            android:id="@+id/action_fav_books"
+            android:title="@string/ic_fav_books"
+            android:icon="@drawable/ic_is_favorite_24dp"
+            app:showAsAction="always|withText">
+
+        </item>
+        <item
+            android:id="@+id/action_your_configs"
+            android:title="@string/ic_your_configs"
+            android:icon="@drawable/ic_your_config"
+            app:showAsAction="always|withText"/>
+
+
+    </group>
+
+
+</menu>
