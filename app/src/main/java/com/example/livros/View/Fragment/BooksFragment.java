@@ -18,8 +18,7 @@ import android.widget.Toast;
 
 import com.example.livros.Model.Book;
 import com.example.livros.R;
-import com.example.livros.View.Fragment.dummy.DummyContent;
-import com.example.livros.View.Fragment.dummy.DummyContent.DummyItem;
+import com.example.livros.View.Fragment.BooksContent.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +84,7 @@ public class BooksFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new BooksRecyclerViewAdapter(getContext(),DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new BooksRecyclerViewAdapter(getContext(), BooksContent.ITEMS, mListener));
         }
         return view;
     }

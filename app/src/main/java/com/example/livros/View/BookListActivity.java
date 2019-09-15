@@ -1,7 +1,6 @@
 package com.example.livros.View;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -17,16 +16,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.R;
 import com.example.livros.View.Fragment.BookFilterSelected;
 import com.example.livros.View.Fragment.BooksFragment;
+import com.example.livros.View.Fragment.BooksContent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class BookListActivity extends AppCompatActivity{
+public class BookListActivity extends AppCompatActivity implements BooksFragment.OnListFragmentInteractionListener{
     private BottomNavigationView bottomNavigationView;
     private CoordinatorLayout coordinatorLayout;
     private ViewPager viewPager;
@@ -37,17 +35,12 @@ public class BookListActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
         acoesReferentesAoBottomNavigation();
-        toolbarComMenuNavAbreEFecha();
+        configToolbar();
         criarFragment(savedInstanceState);
     }
-    private void toolbarComMenuNavAbreEFecha(){
+    private void configToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
     }
     private void criarFragment(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
@@ -64,8 +57,8 @@ public class BookListActivity extends AppCompatActivity{
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-               BooksFragment fragment = (BooksFragment) getSupportFragmentManager().findFragmentById(R.id.container);
-                fragment.search(query.toLowerCase());
+               BooksFragment fragment = (BooksFragment) getSupportFragmentManager().findFragmentById(R.id.containerframe);
+                //fragment.search(query.toLowerCase());
                 return false;
             }
 
@@ -83,7 +76,7 @@ public class BookListActivity extends AppCompatActivity{
             @Override
             public void onViewDetachedFromWindow(View v) {
                BooksFragment fragment = (BooksFragment) getSupportFragmentManager().findFragmentById(R.id.containerframe);
-                fragment.closeSearch();
+                //fragment.closeSearch();
             }
         });
 
@@ -135,10 +128,10 @@ public class BookListActivity extends AppCompatActivity{
         getSupportActionBar().setTitle(getIntent().getStringExtra(tipo));
         frag = BooksFragment.newInstance(0);
         frag.setArguments(getIntent().getExtras());
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.containerframe, frag).commit();
         try {
             toolbar.collapseActionView();
-            toolbarComMenuNavAbreEFecha();
+            configToolbar();
         }catch (Error error){
             error.printStackTrace();
         }
@@ -171,12 +164,12 @@ public class BookListActivity extends AppCompatActivity{
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            exibirMsgEAgirSeQuiserSairRealmente();
-        }
+        exibirMsgEAgirSeQuiserSairRealmente();
+
     }
 
+    @Override
+    public void onListFragmentInteraction(BooksContent.DummyItem item) {
+
+    }
 }

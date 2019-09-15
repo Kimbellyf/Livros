@@ -14,8 +14,7 @@ import android.widget.TextView;
 import com.example.livros.Infra.ImageUtils;
 import com.example.livros.R;
 import com.example.livros.View.Fragment.BooksFragment.OnListFragmentInteractionListener;
-import com.example.livros.View.Fragment.dummy.DummyContent.DummyItem;
-import com.squareup.picasso.Picasso;
+import com.example.livros.View.Fragment.BooksContent.DummyItem;
 
 import java.util.List;
 

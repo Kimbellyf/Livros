@@ -24,10 +24,11 @@
         android:roundIcon="@mipmap/ic_novo_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.NewListBooksActivity"></activity>
         <activity
             android:name=".TesteTabsActivity"
             android:label="@string/title_activity_teste_tabs"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.TesteNavActivity"
             android:label="@string/title_activity_teste_nav"
@@ -41,7 +42,7 @@
         </activity>
         <activity android:name=".View.BookListActivity" />
         <activity android:name=".View.BookDetailsActivity" />
-        <activity android:name=".View.FavListActivity" />
+        <activity android:name=".View.itemsBottomNav.favorites.FavListActivity" />
         <activity android:name=".View.MainActivity" />
     </application>
 
