@@ -1,21 +1,27 @@
 package com.example.livros.View.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.livros.Model.Book;
 import com.example.livros.R;
 import com.example.livros.View.Fragment.dummy.DummyContent;
 import com.example.livros.View.Fragment.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +37,13 @@ public class BooksFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    protected RecyclerView recyclerView;
+    private String tipo;
+    private List<Book> books;
+    private SwipeRefreshLayout swipeLayout;
+    private ActionMode actionMode;
+    private Intent shareIntent;
+    private List<Book> tempBooks;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -72,7 +85,7 @@ public class BooksFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new BooksRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new BooksRecyclerViewAdapter(getContext(),DummyContent.ITEMS, mListener));
         }
         return view;
     }
@@ -108,5 +121,22 @@ public class BooksFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
+    }
+    public void search(String texto){
+        tempBooks = new ArrayList<>();
+        for (Book book: books){
+            if (book.getTitle().toLowerCase().contains(texto)){
+                tempBooks.add(book);
+            }
+        }
+        if (tempBooks.size() == 0){
+            Toast.makeText(getActivity(), "Nenhum livro encontrado", Toast.LENGTH_SHORT).show();
+        }
+       // recyclerView.setAdapter(new BooksRecyclerViewAdapter(getContext(), tempBooks//, onClickAnuncio()));
+    }
+
+    public void closeSearch(){
+        tempBooks = null;
+        //recyclerView.setAdapter(new BooksRecyclerViewAdapter(getContext(), books, on));
     }
 }

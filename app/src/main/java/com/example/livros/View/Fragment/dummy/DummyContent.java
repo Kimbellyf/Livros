@@ -57,6 +57,9 @@ public class DummyContent {
         public final String id;
         public final String content;
         public final String details;
+        //public final String title;
+        //public final String authors;
+        //public final
 
         public DummyItem(String id, String content, String details) {
             this.id = id;

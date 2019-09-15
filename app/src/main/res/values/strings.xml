@@ -27,4 +27,9 @@
     <string name="text_view_author_name">Authors name</string>
     <string name="text_view_short_description">Short description</string>
     <string name="img_view_book_photo">Foto do livro</string>
+    <string name="text_view_more_details_book">Mais detalhes sobre o livro:</string>
+    <string name="ic_add_book_list_fav">Adicionar o livro na lista de favoritos</string>
+    <string name="Search">Procurar livro por</string>
+    <string name="action_filter_by_category">Filtrar por categoria</string>
+    <string name="action_filter_by_author">Filtrar por autor</string>
 </resources>

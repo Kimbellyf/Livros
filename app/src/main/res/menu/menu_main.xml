@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_24dp"
+        android:orderInCategory="200"
+        android:title="@string/Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
+
+    <item
+        android:id="@+id/action_add_lista_desejo"
+        android:icon="@drawable/ic_is_favorite_24dp"
+        android:orderInCategory="301"
+        android:title="@string/action_add_fav_book"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_filter_by_category"
+        android:orderInCategory="100"
+        android:title="@string/action_filter_by_category"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_filter_by_author"
+        android:orderInCategory="100"
+        android:title="@string/action_filter_by_author"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sair"
+        android:orderInCategory="101"
+        android:title="Sair"
+        android:visible="false"/>
+
+</menu>
