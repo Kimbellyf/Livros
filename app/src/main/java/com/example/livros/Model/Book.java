@@ -1,16 +1,23 @@
 package com.example.livros.Model;
 
+import com.example.livros.View.NewTest.NewBooksContent;
+
 public class Book {
+    public boolean selected;
+    public String id;
     private String title;
     private String isbn;
     private String thumbnailUrl;
     private String shortDescription;
     private String longDescription ;
     private String  status ;
+
+/*    public Book(String valueOf, String s, String makeDetails) {
+    }
     //private String    ; lista de authors
     //lista categories
     //lista publishdate - q contem date
-
+*/
     public String getTitle() {
         return title;
     }
@@ -59,5 +66,17 @@ public class Book {
         this.status = status;
     }
 
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "selected=" + selected +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", longDescription='" + longDescription + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

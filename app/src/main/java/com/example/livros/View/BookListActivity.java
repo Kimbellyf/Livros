@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -18,10 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livros.Infra.SessaoApplication;
+import com.example.livros.Model.Book;
 import com.example.livros.R;
 import com.example.livros.View.Fragment.BookFilterSelected;
 import com.example.livros.View.Fragment.BooksFragment;
-import com.example.livros.View.Fragment.BooksContent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BookListActivity extends AppCompatActivity implements BooksFragment.OnListFragmentInteractionListener{
@@ -41,12 +39,13 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
     private void configToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     private void criarFragment(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             BooksFragment frag = new BooksFragment();
             frag.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction().replace(R.id.containerframe, frag).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
         }
     }
     @Override
@@ -57,7 +56,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-               BooksFragment fragment = (BooksFragment) getSupportFragmentManager().findFragmentById(R.id.containerframe);
+               BooksFragment fragment = (BooksFragment) getSupportFragmentManager().findFragmentById(R.id.container);
                 //fragment.search(query.toLowerCase());
                 return false;
             }
@@ -75,7 +74,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
 
             @Override
             public void onViewDetachedFromWindow(View v) {
-               BooksFragment fragment = (BooksFragment) getSupportFragmentManager().findFragmentById(R.id.containerframe);
+               BooksFragment fragment = (BooksFragment) getSupportFragmentManager().findFragmentById(R.id.container);
                 //fragment.closeSearch();
             }
         });
@@ -128,7 +127,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
         getSupportActionBar().setTitle(getIntent().getStringExtra(tipo));
         frag = BooksFragment.newInstance(0);
         frag.setArguments(getIntent().getExtras());
-        getSupportFragmentManager().beginTransaction().replace(R.id.containerframe, frag).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
         try {
             toolbar.collapseActionView();
             configToolbar();
@@ -169,7 +168,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
     }
 
     @Override
-    public void onListFragmentInteraction(BooksContent.DummyItem item) {
+    public void onListFragmentInteraction(Book item) {
 
     }
 }

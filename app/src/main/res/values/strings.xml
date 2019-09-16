@@ -32,4 +32,10 @@
     <string name="Search">Procurar livro por</string>
     <string name="action_filter_by_category">Filtrar por categoria</string>
     <string name="action_filter_by_author">Filtrar por autor</string>
+    <string name="msg_erro_io_timeout">Time out</string>
+    <string name="text_your_config">Configurações</string>
+    <string name="text_fav_list_book">Lista de livros favoritos</string>
+    <string name="text_all_books">Todos os livros</string>
+    <string name="msg_error_io">Erro2</string>
+    <string name="title_activity_apagar">ApagarActivity</string>
 </resources>

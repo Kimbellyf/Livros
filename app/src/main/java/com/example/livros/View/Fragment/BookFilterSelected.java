@@ -35,8 +35,8 @@ public class BookFilterSelected {
         return (Book) values.get("sessao.AnuncioSelecionado");
     }
 
-    public void setAnuncioSelecionado(Book anuncioSelecionado) {
-        setValor("sessao.AnuncioSelecionado", anuncioSelecionado);
+    public void setBookSelected(Book bookSelected) {
+        setValor("sessao.AnuncioSelecionado", bookSelected);
     }
 
     public Book getTypeBookSelected() {

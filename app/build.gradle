@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    android {
+        useLibrary 'org.apache.http.legacy'
+    }
 }
 
 dependencies {
@@ -50,4 +53,7 @@ dependencies {
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    // Android-Utils
+    //implementation 'br.com.livroandroid:android-utils:5.0.1' - conflito - tive q add na mao
 }

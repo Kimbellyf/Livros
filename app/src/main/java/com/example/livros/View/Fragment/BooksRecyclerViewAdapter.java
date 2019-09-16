@@ -12,26 +12,29 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.livros.Infra.ImageUtils;
+import com.example.livros.Infra.SessaoApplication;
+import com.example.livros.Model.Book;
 import com.example.livros.R;
 import com.example.livros.View.Fragment.BooksFragment.OnListFragmentInteractionListener;
-import com.example.livros.View.Fragment.BooksContent.DummyItem;
+import com.example.livros.View.Fragment.BooksContent.BookItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link BookItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecyclerViewAdapter.BooksViewHolder> {
-
-    private final List<DummyItem> mValues;
+    private final List<Book> mValues;
+   // private final List<BookItem> mValues;
     private final Context context;
     private final OnListFragmentInteractionListener mListener;
 
-    public BooksRecyclerViewAdapter(Context context,List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public BooksRecyclerViewAdapter(Context context, List<Book> items, OnListFragmentInteractionListener listener) {
+        //this.books = books;
         this.context = context;
-        mValues = items;
+        mValues = SessaoApplication.getBooklistatmoment();
         mListener = listener;
     }
     //abaixo metodos que devem ser implementados para ter diferentes respostas dependendo do clique
@@ -55,16 +58,16 @@ public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecycler
         // Livro da linha
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        //holder.mContentView.setText(mValues.get(position).content);
         // Atualiza os valores nas views
-        //holder.mTitle.setText(mValues.get(position).title);
+        holder.mTitle.setText(mValues.get(position).getTitle());
         //holder.mAuthorsNames.setText(mValues.get(position).AuthorsName);
-        //holder.mShortDescription.setText(mValues.get(position).shortDescription);
+        holder.mShortDescription.setText(mValues.get(position).getShortDescription());
 
-        //String urlImg =  mValues.get(position).thumbnailUrl;
+        String urlImg =  mValues.get(position).getThumbnailUrl();
 
         // Foto do Ad
-        ImageUtils.setImage(context,"http://i.imgur.com/DvpvklR.png", holder.mImg);
+        ImageUtils.setImage(context,urlImg, holder.mImg);
 
 
         // Click
@@ -104,12 +107,12 @@ public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecycler
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Book mItem;
         CardView mCardView;
         public ImageView mImg;
         public TextView mTitle;
         public TextView mAuthorsNames;
-        public TextView mShortDescription;
+        TextView mShortDescription;
         private ProgressBar progress;
 
         public BooksViewHolder(View view) {

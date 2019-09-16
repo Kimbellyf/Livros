@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.livros.R;
+import com.example.livros.View.NewTest.NewListBooksActivity;
 
 public class SplashActivity extends AppCompatActivity implements Runnable {
 
@@ -28,7 +29,7 @@ public class SplashActivity extends AppCompatActivity implements Runnable {
      */
 
     public void run() {
-        startActivity(new Intent(this, BookListActivity.class));
+        startActivity(new Intent(this, NewListBooksActivity.class));
         finish();
     }
 }

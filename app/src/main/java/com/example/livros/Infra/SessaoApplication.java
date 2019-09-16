@@ -23,12 +23,30 @@ public class SessaoApplication extends Application {
     private String _id = "null";
     //private User user;
     private Date horaRecebidoToken = null;
-   // private Owner ownerIsLogado = null;
-    //private Customer customerIsLogado =null;
+    //private User UserIsLogado =null;
     private Class telaAtual =null;
     private Class telaAnterior =null;
     private static Context mContext;
     private static List<Book> adRecomendacao;
+    private static List<Book> booklistatmoment;
+    private static List<Book> FavBookList;
+
+    public static List<Book> getFavBookList() {
+        return FavBookList;
+    }
+
+    public static void setFavBookList(List<Book> favBookList) {
+        FavBookList = favBookList;
+    }
+
+
+    public static List<Book> getBooklistatmoment() {
+        return booklistatmoment;
+    }
+
+    public static void setBooklistatmoment(List<Book> booklistatmoment) {
+        SessaoApplication.booklistatmoment = booklistatmoment;
+    }
 
     public static SessaoApplication getInstance() {
         return instance; // Singleton
@@ -91,23 +109,7 @@ public class SessaoApplication extends Application {
     public void setHoraRecebidoToken(Date horaRecebidoToken){
         this.horaRecebidoToken = horaRecebidoToken;
     }
-    public Date getHoraRecebidoToken() {
-        return horaRecebidoToken;
-    }
-    /*
-    public Owner getObjOwnerSeEleForTipoLogado(){
-        return ownerIsLogado;
-    }
-    public void setObjOwnerSeEleForTipoLogado(Owner owner){
-        ownerIsLogado=owner;
-    }
-    public Customer getObjCustomerSeEleForTipoLogado(){
-        return customerIsLogado;
-    }
-    public void setObjCustomerSeEleForTipoLogado(Customer customer){
-        customerIsLogado=customer;
-    }
-*/
+
     public void setTelaAtual(Class telaAtual) {
         setTelaAnterior(this.telaAtual);
         this.telaAtual =telaAtual;
@@ -130,14 +132,10 @@ public class SessaoApplication extends Application {
         reset();
         super.onTerminate();
         SessaoApplication.getInstance().setTipoDeUserLogado("null");
-        SessaoApplication.getInstance().setTokenUser("null");
         SessaoApplication.getInstance().setIdUser("null");
         SessaoApplication.getInstance().setHoraRecebidoToken(null);
         SessaoApplication.getInstance().setTelaAnterior(null);
-       /* SessaoApplication.getInstance().setObjOwnerSeEleForTipoLogado(null);
-        SessaoApplication.getInstance().setObjCustomerSeEleForTipoLogado(null);
 
-        */
         Log.d(TAG, " SessaoApplication.onTerminate()");
     }
 
