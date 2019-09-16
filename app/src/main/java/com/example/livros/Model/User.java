@@ -20,4 +20,11 @@ public class User {
         this.senha = senha;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
+    }
 }

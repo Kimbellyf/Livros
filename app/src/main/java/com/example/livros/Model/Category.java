@@ -21,4 +21,12 @@ public class Category {
     public void setBooksofcategory(List<Book> booksofcategory) {
         this.booksofcategory = booksofcategory;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name + '\'' +
+                ", booksofcategory=" + booksofcategory +
+                '}';
+    }
 }

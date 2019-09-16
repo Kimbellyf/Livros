@@ -1,7 +1,5 @@
 package com.example.livros.Model;
 
-import com.example.livros.View.NewTest.NewBooksContent;
-
 import java.util.List;
 
 public class Book {
@@ -14,6 +12,13 @@ public class Book {
     private String longDescription ;
     private String  status ;
     private List<Author> authors;
+    private List<PublishedDate> publishedDate;
+
+
+
+    public void setPublishedDate(List<PublishedDate> publishedDate) {
+        this.publishedDate = publishedDate;
+    }
 
 
 
@@ -77,6 +82,9 @@ public class Book {
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
+    }
+    public List<PublishedDate> getPublishedDate() {
+        return publishedDate;
     }
 
     @Override

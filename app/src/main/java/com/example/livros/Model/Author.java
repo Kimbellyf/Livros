@@ -21,4 +21,11 @@ public class Author {
         this.booksByAuthor = getBooksByAuthor;
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", booksByAuthor=" + booksByAuthor +
+                '}';
+    }
 }

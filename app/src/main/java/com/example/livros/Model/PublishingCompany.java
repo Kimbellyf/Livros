@@ -2,7 +2,7 @@ package com.example.livros.Model;
 
 import java.util.List;
 
-public class PublishCompany {
+public class PublishingCompany {
 
     private String name;
     private List<Book> booksByCompany;
@@ -23,4 +23,11 @@ public class PublishCompany {
         this.booksByCompany = booksByCompany;
     }
 
+    @Override
+    public String toString() {
+        return "PublishingCompany{" +
+                "name='" + name + '\'' +
+                ", booksByCompany=" + booksByCompany +
+                '}';
+    }
 }
