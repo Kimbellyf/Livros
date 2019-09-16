@@ -2,6 +2,8 @@ package com.example.livros.Model;
 
 import com.example.livros.View.NewTest.NewBooksContent;
 
+import java.util.List;
+
 public class Book {
     public boolean selected;
     public String id;
@@ -11,6 +13,9 @@ public class Book {
     private String shortDescription;
     private String longDescription ;
     private String  status ;
+    private List<Author> authors;
+
+
 
 /*    public Book(String valueOf, String s, String makeDetails) {
     }
@@ -64,6 +69,14 @@ public class Book {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     @Override

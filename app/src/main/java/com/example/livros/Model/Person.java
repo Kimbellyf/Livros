@@ -3,6 +3,7 @@ package com.example.livros.Model;
 public class Person {
     private String name;
     private FavList favList;
+    private User user;
 
     public String getName() {
         return name;
@@ -18,5 +19,13 @@ public class Person {
 
     public void setFavList(FavList favList) {
         this.favList = favList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
