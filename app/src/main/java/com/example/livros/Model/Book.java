@@ -11,23 +11,63 @@ public class Book {
     private String shortDescription;
     private String longDescription ;
     private String  status ;
-    private List<Author> authors;
-    private List<PublishedDate> publishedDate;
-
-
-
-    public void setPublishedDate(List<PublishedDate> publishedDate) {
-        this.publishedDate = publishedDate;
+    private List<Author> authorsO;
+    private List<Category> categoriesO;
+    private List<PublishedDate> publishedDateO;
+    private String pageCount;
+    private List<String> authors;
+    private List<String> categories;
+    /*    public Book(String valueOf, String s, String makeDetails) {
     }
-
-
-
-/*    public Book(String valueOf, String s, String makeDetails) {
-    }
-    //private String    ; lista de authors
-    //lista categories
+    //private String    ; lista de authorsO
+    //lista categoriesO
     //lista publishdate - q contem date
 */
+
+
+    public Book() {
+       this.shortDescription ="";
+       this.longDescription = "";
+
+    }
+
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<String> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+
+
+
+
+
     public String getTitle() {
         return title;
     }
@@ -76,15 +116,33 @@ public class Book {
         this.status = status;
     }
 
-    public List<Author> getAuthors() {
-        return authors;
+    public List<Author> getAuthorsO() {
+        return authorsO;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
+    public void setAuthorsO(List<Author> authorsO) {
+        this.authorsO = authorsO;
     }
-    public List<PublishedDate> getPublishedDate() {
-        return publishedDate;
+    public List<Category> getCategoriesO() {
+        return categoriesO;
+    }
+
+    public void setCategoriesO(List<Category> categoriesO) {
+        this.categoriesO = categoriesO;
+    }
+    public List<PublishedDate> getPublishedDateO() {
+        return publishedDateO;
+    }
+
+    public void setPublishedDateO(List<PublishedDate> publishedDateO) {
+        this.publishedDateO = publishedDateO;
+    }
+    public String getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(String pageCount) {
+        this.pageCount = pageCount;
     }
 
     @Override
@@ -98,6 +156,9 @@ public class Book {
                 ", shortDescription='" + shortDescription + '\'' +
                 ", longDescription='" + longDescription + '\'' +
                 ", status='" + status + '\'' +
+                ", authorsO=" + authorsO +
+                ", categoriesO=" + categoriesO +
+                ", publishedDateO=" + publishedDateO +
                 '}';
     }
 }

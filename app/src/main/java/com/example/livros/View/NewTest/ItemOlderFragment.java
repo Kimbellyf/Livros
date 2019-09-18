@@ -3,7 +3,6 @@ package com.example.livros.View.NewTest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
+import com.example.livros.View.Fragment.BooksContent;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ItemFragment extends Fragment {
+public class ItemOlderFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -31,10 +32,6 @@ public class ItemFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
     //List<Book> mValues;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     protected RecyclerView recyclerView;
     private String tipo;
     private List<Book> ads;
@@ -42,13 +39,13 @@ public class ItemFragment extends Fragment {
     private ActionMode actionMode;
     private Intent shareIntent;
     private List<Book> tempAds;
-    public ItemFragment() {
+    public ItemOlderFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ItemFragment newInstance(int columnCount) {
-        ItemFragment fragment = new ItemFragment();
+    public static ItemOlderFragment newInstance(int columnCount) {
+        ItemOlderFragment fragment = new ItemOlderFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -78,8 +75,20 @@ public class ItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
+             List<Book> listatestenew = new ArrayList<Book>();
+            Book bookteste = new Book();
+            bookteste.setTitle("Kim");
+            bookteste.setShortDescription("hey");
+            listatestenew.add(bookteste);
+
+            Book booktestetwo = new Book();
+            bookteste.setTitle("Josuel");
+            bookteste.setShortDescription("hey");
+            listatestenew.add(booktestetwo);
+            SessaoApplication.setBooklistatmoment(listatestenew);
+
             NewBooksContent.setITEMS(SessaoApplication.getBooklistatmoment());
-           // recyclerView.setAdapter(new NewBooksRecyclerViewAdapter(getContext(),NewBooksContent.ITEMS, mListener));
+            recyclerView.setAdapter(new NewBooksRecyclerViewAdapter(getContext(),NewBooksContent.ITEMS, mListener));
         }
         //Log.d("exrd",SessaoApplication.getBooklistatmoment().toString());
         //Log.d(("respsessao",SessaoApplication.getBooklistatmoment());
@@ -130,6 +139,6 @@ public class ItemFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Book mItem);
+        void onListFragmentInteraction(BooksContent.BookItem mItem);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.livros.Teste;
+package com.example.livros.View.TesteAgain;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,10 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.livros.Teste.dummy.BookItem;
 import com.example.livros.R;
-import com.example.livros.Teste.dummy.NewTwoBooksContent;
-
+import com.example.livros.View.TesteAgain.dummy.PictureContent;
+import com.example.livros.View.TesteAgain.PictureItem;
 
 /**
  * A fragment representing a list of Items.
@@ -23,7 +22,7 @@ import com.example.livros.Teste.dummy.NewTwoBooksContent;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ItemApagarFragment extends Fragment {
+public class ItemFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -35,13 +34,13 @@ public class ItemApagarFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ItemApagarFragment() {
+    public ItemFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ItemApagarFragment newInstance(int columnCount) {
-        ItemApagarFragment fragment = new ItemApagarFragment();
+    public static ItemFragment newInstance(int columnCount) {
+        ItemFragment fragment = new ItemFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -60,7 +59,7 @@ public class ItemApagarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_apagar_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -71,7 +70,7 @@ public class ItemApagarFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemApagarRecyclerViewAdapter(NewTwoBooksContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(PictureContent.ITEMSPIC, mListener));
         }
         return view;
     }
@@ -106,6 +105,6 @@ public class ItemApagarFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(BookItem item);
+        void onListFragmentInteraction(PictureItem item);
     }
 }

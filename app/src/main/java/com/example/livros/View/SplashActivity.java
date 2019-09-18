@@ -2,13 +2,14 @@ package com.example.livros.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.livros.R;
+import com.example.livros.View.Fragment.BookListActivity;
 import com.example.livros.View.NewTest.NewListBooksActivity;
+import com.example.livros.View.TesteAgain.ScrollingActivity;
 
 public class SplashActivity extends AppCompatActivity implements Runnable {
 
@@ -29,7 +30,7 @@ public class SplashActivity extends AppCompatActivity implements Runnable {
      */
 
     public void run() {
-        startActivity(new Intent(this, NewListBooksActivity.class));
+        startActivity(new Intent(this, BookListActivity.class));
         finish();
     }
 }

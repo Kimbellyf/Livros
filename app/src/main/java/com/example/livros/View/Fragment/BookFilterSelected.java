@@ -2,7 +2,6 @@ package com.example.livros.View.Fragment;
 
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Model.Book;
-import com.example.livros.View.BookListActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,15 +26,15 @@ public class BookFilterSelected {
         setValor("BookFilterSelected.anunciosList", anunciosList);
     }
 
-    public ArrayList<Book> getAnunciosList() {
-        return (ArrayList<Book>) values.get("BookFilterSelected.anunciosList");
+    public ArrayList<BooksContent.BookItem> getAnunciosList() {
+        return (ArrayList<BooksContent.BookItem>) values.get("BookFilterSelected.anunciosList");
     }
 
-    public Book getBookSelected() {
-        return (Book) values.get("sessao.AnuncioSelecionado");
+    public BooksContent.BookItem getBookSelected() {
+        return (BooksContent.BookItem) values.get("sessao.AnuncioSelecionado");
     }
 
-    public void setBookSelected(Book bookSelected) {
+    public void setBookSelected(BooksContent.BookItem bookSelected) {
         setValor("sessao.AnuncioSelecionado", bookSelected);
     }
 

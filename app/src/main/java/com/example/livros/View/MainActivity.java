@@ -3,9 +3,10 @@ package com.example.livros.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
-import com.example.livros.Teste.JsonPlaceHolderApi;
+import com.example.livros.View.Fragment.JsonPlaceHolderApi;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     String content = "";
                     content += "Title:" + book.getTitle() + "\n";
                     content += "Short Description:" + book.getShortDescription() + "\n\n";
-
+                    Log.i("tostring",book.toString());
                     testViewResult.append(content);
 
                 }

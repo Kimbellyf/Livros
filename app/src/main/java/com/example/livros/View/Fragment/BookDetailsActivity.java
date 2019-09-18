@@ -1,4 +1,4 @@
-package com.example.livros.View;
+package com.example.livros.View.Fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,12 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.livros.Infra.SessaoApplication;
-import com.example.livros.Model.Book;
 import com.example.livros.R;
-import com.example.livros.View.Fragment.BookFilterSelected;
+import com.example.livros.View.YesOrNoDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.text.SimpleDateFormat;
 
 public class BookDetailsActivity extends AppCompatActivity {
     private ImageView photoBook;
@@ -45,6 +42,8 @@ public class BookDetailsActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        toolbar.setTitleTextColor( getResources().getColor(R.color.colorWhite));
+        toolbar.setTitle(BookFilterSelected.instance.getBookSelected().getTitle());
     }
 
     public void encontrandoItensViews() {
@@ -73,7 +72,7 @@ public class BookDetailsActivity extends AppCompatActivity {
     }
 
     public void setarInfoView() {
-        Book bookSelected = BookFilterSelected.instance.getBookSelected();
+        BooksContent.BookItem bookSelected = BookFilterSelected.instance.getBookSelected();
         titleBook.setText(bookSelected.getTitle());
        /* authorsNames.setText(("Autor(es) :" +bookSelected.getOwner().getSocialname()));
         SimpleDateFormat sdfDiaMesAno = new SimpleDateFormat("dd/MM/yyyy");
@@ -130,6 +129,6 @@ public class BookDetailsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        this.mudarTela(SessaoApplication.getInstance().getTelaAnterior());
+        finish();
     }
 }

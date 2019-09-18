@@ -1,4 +1,4 @@
-package com.example.livros.Teste;
+package com.example.livros.View.categories.categories;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -7,23 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.livros.Teste.ItemApagarFragment.OnListFragmentInteractionListener;
-import com.example.livros.Teste.dummy.BookItem;
 import com.example.livros.R;
+
+import com.example.livros.View.categories.categories.dummy.CategoriesContent.CategoriesItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link BookItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * {@link RecyclerView.Adapter} that can display a {@link CategoriesItem} and makes a call to the
+ * specified { OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyItemApagarRecyclerViewAdapter extends RecyclerView.Adapter<MyItemApagarRecyclerViewAdapter.ViewHolder> {
+public class NamesCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<NamesCategoriesRecyclerViewAdapter.ViewHolder> {
 
-    private final List<BookItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final List<CategoriesItem> mValues;
+    private final NamesCategoriesFragment.OnListFragmentInteractionListener mListener;
 
-    public MyItemApagarRecyclerViewAdapter(List<BookItem> items, OnListFragmentInteractionListener listener) {
+    public NamesCategoriesRecyclerViewAdapter(List<CategoriesItem> items, NamesCategoriesFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -31,7 +31,7 @@ public class MyItemApagarRecyclerViewAdapter extends RecyclerView.Adapter<MyItem
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item_apagar, parent, false);
+                .inflate(R.layout.fragment_testeagain_adapter, parent, false);
         return new ViewHolder(view);
     }
 
@@ -39,7 +39,7 @@ public class MyItemApagarRecyclerViewAdapter extends RecyclerView.Adapter<MyItem
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        //holder.mContentView.setText(mValues.get(position).content);
+        holder.mContentView.setText(mValues.get(position).content);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ public class MyItemApagarRecyclerViewAdapter extends RecyclerView.Adapter<MyItem
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public BookItem mItem;
+        public CategoriesItem mItem;
 
         public ViewHolder(View view) {
             super(view);

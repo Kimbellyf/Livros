@@ -9,39 +9,55 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.livros.Infra.ImageUtils;
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
+import com.example.livros.View.Fragment.BooksContent;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link Book} and makes a call to the
- * specified {@link ItemFragment.OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class NewBooksRecyclerViewAdapter extends RecyclerView.Adapter<NewBooksRecyclerViewAdapter.BooksViewHolder> {
-    private final List<Book> mValues;
-   // private final List<BookItem> mValues;
+    private final List<BooksContent.BookItem> mValues;
     private final Context context;
-    private final ItemFragment.OnListFragmentInteractionListener mListener;
+    private final List<BooksContent.BookItem> listateste = new ArrayList<BooksContent.BookItem>();
+    private final ItemOlderFragment.OnListFragmentInteractionListener mListener;
 
-    public NewBooksRecyclerViewAdapter(Context context, List<Book> items, ItemFragment.OnListFragmentInteractionListener listener) {
+
+    public NewBooksRecyclerViewAdapter(Context context, List<Book> items, ItemOlderFragment.OnListFragmentInteractionListener listener) {
         //this.books = books;
         this.context = (Context) context;
 
         //mValues = items;
-        mValues = SessaoApplication.getBooklistatmoment();
+       /* BooksContent.BookItem bookteste = new BooksContent.BookItem();
+        bookteste.setTitle("Kim");
+        bookteste.setShortDescription("hey");
+        listateste.add(bookteste);
+
+        BooksContent.BookItem booktestetwo = new BooksContent.BookItem();
+        bookteste.setTitle("Josuel");
+        bookteste.setShortDescription("hey");
+        listateste.add(booktestetwo);
+
+        */
+
+        //this.mValues = SessaoApplication.getBooklistatmoment();
+        this.mValues = listateste;
         List<Book> testeitem = SessaoApplication.getBooklistatmoment();
         for (Book book: testeitem){
             Log.d("testezinho", String.valueOf(book));
         }
-        mListener = (ItemFragment.OnListFragmentInteractionListener) listener;
+        this.mListener = (ItemOlderFragment.OnListFragmentInteractionListener) listener;
+    }
+    public void setBookData(ArrayList<BooksContent.BookItem> itemData) {
+        mValues.clear();
+        mValues.addAll(itemData);
+        notifyDataSetChanged();
     }
 
     //abaixo metodos que devem ser implementados para ter diferentes respostas dependendo do clique
@@ -54,7 +70,7 @@ public class NewBooksRecyclerViewAdapter extends RecyclerView.Adapter<NewBooksRe
 
 
     @Override
-    public BooksViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BooksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_adapter_books, parent, false);
         return new BooksViewHolder(view);
@@ -63,6 +79,8 @@ public class NewBooksRecyclerViewAdapter extends RecyclerView.Adapter<NewBooksRe
     @Override
     public void onBindViewHolder(final BooksViewHolder holder, final int position) {
         // Livro da linha
+        // Ad da linha
+        BooksContent.BookItem b = mValues.get(position);
         holder.mItem = mValues.get(position);
         //holder.mIdView.setText(mValues.get(position).id);
         //holder.mContentView.setText(mValues.get(position).content);
@@ -71,10 +89,10 @@ public class NewBooksRecyclerViewAdapter extends RecyclerView.Adapter<NewBooksRe
         //holder.mAuthorsNames.setText(mValues.get(position).AuthorsName);
         holder.mShortDescription.setText(mValues.get(position).getShortDescription());
 
-        String urlImg =  mValues.get(position).getThumbnailUrl();
+        //String urlImg =  mValues.get(position).getThumbnailUrl();
 
         // Foto do Ad
-        ImageUtils.setImage(context,urlImg, holder.mImg);
+        //ImageUtils.setImage(context,urlImg, holder.mImg);
 
 
         // Click
@@ -98,23 +116,24 @@ public class NewBooksRecyclerViewAdapter extends RecyclerView.Adapter<NewBooksRe
             });
         }
         // Pinta o fundo de azul se a linha estiver selecionada
-        //int corFundo = context.getResources().getColor(ava.selected ? R.color.colorPrimary : R.color.colorWhite);
-        //holder.mCardView.setCardBackgroundColor(corFundo);
+        int corFundo = context.getResources().getColor(b.selected ? R.color.colorPrimary : R.color.colorWhite);
+        holder.mCardView.setCardBackgroundColor(corFundo);
         // A cor do texto é branca ou azul, depende da cor do fundo.
-        //int corFonte = context.getResources().getColor(c.selected ? R.color.colorWhite : R.color.colorPrimary);
+        int corFonte = context.getResources().getColor(b.selected ? R.color.colorWhite : R.color.colorPrimary);
         //holder.tNome.setTextColor(corFonte);
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        //return mValues.size();
+        return mValues != null ? this.mValues.size() : 0;
     }
 
     public class BooksViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public Book mItem;
+        public BooksContent.BookItem mItem;
         CardView mCardView;
         public ImageView mImg;
         public TextView mTitle;

@@ -1,4 +1,4 @@
-package com.example.livros.Teste;
+package com.example.livros.Infra;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,8 +9,8 @@ import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Infra.utils.bibliotecalivroandroid.utils.FileUtils;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
-import com.example.livros.View.BookDetailsActivity;
-import com.example.livros.View.BookListActivity;
+import com.example.livros.View.Fragment.BookDetailsActivity;
+import com.example.livros.View.Fragment.BookListActivity;
 import com.example.livros.View.Fragment.BooksContent;
 import com.example.livros.View.itemsBottomNav.favorites.FavListActivity;
 import com.google.gson.Gson;

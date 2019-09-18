@@ -11,9 +11,23 @@
 
             />
         <item
+            android:id="@+id/action_categories_books"
+            android:title="@string/ic_categories_books"
+            android:icon="@drawable/ic_archive_categories"
+            app:showAsAction="always|withText">
+
+        </item>
+        <item
             android:id="@+id/action_fav_books"
             android:title="@string/ic_fav_books"
             android:icon="@drawable/ic_is_favorite_24dp"
+            app:showAsAction="always|withText">
+
+        </item>
+        <item
+            android:id="@+id/action_authors_books"
+            android:title="@string/ic_authors_books"
+            android:icon="@drawable/ic_feather_and_ink_bottle_white"
             app:showAsAction="always|withText">
 
         </item>

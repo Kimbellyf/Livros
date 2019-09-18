@@ -1,4 +1,4 @@
-package com.example.livros.View;
+package com.example.livros.View.Fragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livros.Infra.SessaoApplication;
-import com.example.livros.Model.Book;
 import com.example.livros.R;
-import com.example.livros.View.Fragment.BookFilterSelected;
-import com.example.livros.View.Fragment.BooksFragment;
+import com.example.livros.View.TesteNavActivity;
+import com.example.livros.View.YesOrNoDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BookListActivity extends AppCompatActivity implements BooksFragment.OnListFragmentInteractionListener{
@@ -38,8 +37,11 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
     }
     private void configToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
     private void criarFragment(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
@@ -50,7 +52,6 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.menu_main, menu);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -103,13 +104,21 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
                 if(item.getItemId()==R.id.action_all_books){
                     //Por algum motivo o oncreate n pega o bundle(fica dando nul), mas o newinstance ele reconhece sim
                     trocarFragmento("allbooks");
-                    //tive q fazer:
-                    //tbm como n tem pacote no momento, pq é recomendação , mudei p retornar so festa de vez de pacote
                     BookFilterSelected.instance.setTipoListaPraMostrarSubCategoriaBottomNavCliente("festa");
                     return true;
 
-                }else if (item.getItemId()==R.id.action_fav_books){
+                }else if (item.getItemId()==R.id.action_categories_books) {
+                    trocarFragmento("categorieslist");
+                    BookFilterSelected.instance.setTipoListaPraMostrarSubCategoriaBottomNavCliente("casa de festa");
+                    return true;
+                }
+                else if (item.getItemId()==R.id.action_fav_books){
                     trocarFragmento("favbooklist");
+                    BookFilterSelected.instance.setTipoListaPraMostrarSubCategoriaBottomNavCliente("casa de festa");
+                    return true;
+                }
+                else if (item.getItemId()==R.id.action_authors_books) {
+                    trocarFragmento("authorslist");
                     BookFilterSelected.instance.setTipoListaPraMostrarSubCategoriaBottomNavCliente("casa de festa");
                     return true;
                 }else if (item.getItemId()==R.id.action_your_configs) {
@@ -139,7 +148,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
     private void mudarTela(Class tela){
         Intent intent=new Intent(this, tela);
         startActivity(intent);
-        finish();
+
     }
     public void irParaTelaConfiguracoesCliente(){
         this.mudarTela(TesteNavActivity.class);
@@ -168,7 +177,9 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
     }
 
     @Override
-    public void onListFragmentInteraction(Book item) {
+    public void onListFragmentInteraction(BooksContent.BookItem item) {
+        BookFilterSelected.instance.setBookSelected(item);
+        mudarTela(BookDetailsActivity.class);
 
     }
 }

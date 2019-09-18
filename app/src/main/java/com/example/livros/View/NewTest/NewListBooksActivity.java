@@ -16,12 +16,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.livros.Teste.JsonPlaceHolderApi;
+import com.example.livros.View.Fragment.JsonPlaceHolderApi;
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
-import com.example.livros.View.BookDetailsActivity;
+import com.example.livros.View.Fragment.BookDetailsActivity;
 import com.example.livros.View.Fragment.BookFilterSelected;
+import com.example.livros.View.Fragment.BooksContent;
 import com.example.livros.View.TesteNavActivity;
 import com.example.livros.View.YesOrNoDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,7 +36,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class NewListBooksActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener{
+public class NewListBooksActivity extends AppCompatActivity implements ItemOlderFragment.OnListFragmentInteractionListener{
         private BottomNavigationView bottomNavigationView;
         private CoordinatorLayout coordinatorLayout;
         private ViewPager viewPager;
@@ -59,7 +60,7 @@ public class NewListBooksActivity extends AppCompatActivity implements ItemFragm
         }
         private void criarFragment(Bundle savedInstanceState) {
             if (savedInstanceState == null) {
-                ItemFragment frag = new ItemFragment();
+                ItemOlderFragment frag = new ItemOlderFragment();
                 frag.setArguments(getIntent().getExtras());
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
             }
@@ -72,7 +73,7 @@ public class NewListBooksActivity extends AppCompatActivity implements ItemFragm
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                   ItemFragment fragment = (ItemFragment) getSupportFragmentManager().findFragmentById(R.id.container);
+                   ItemOlderFragment fragment = (ItemOlderFragment) getSupportFragmentManager().findFragmentById(R.id.container);
                     //fragment.search(query.toLowerCase());
                     return false;
                 }
@@ -90,7 +91,7 @@ public class NewListBooksActivity extends AppCompatActivity implements ItemFragm
 
                 @Override
                 public void onViewDetachedFromWindow(View v) {
-                    ItemFragment fragment = (ItemFragment) getSupportFragmentManager().findFragmentById(R.id.container);
+                    ItemOlderFragment fragment = (ItemOlderFragment) getSupportFragmentManager().findFragmentById(R.id.container);
                     //fragment.closeSearch();
                 }
             });
@@ -141,7 +142,7 @@ public class NewListBooksActivity extends AppCompatActivity implements ItemFragm
         public void trocarFragmento(String tipo){
             Fragment frag = null;
             getSupportActionBar().setTitle(getIntent().getStringExtra(tipo));
-            frag = ItemFragment.newInstance(0);
+            frag = ItemOlderFragment.newInstance(0);
             frag.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
             try {
@@ -220,7 +221,7 @@ public class NewListBooksActivity extends AppCompatActivity implements ItemFragm
         }
 
         @Override
-        public void onListFragmentInteraction(Book item) {
+        public void onListFragmentInteraction(BooksContent.BookItem item) {
             BookFilterSelected.instance.setBookSelected(item);
             mudarTela(BookDetailsActivity.class);
 

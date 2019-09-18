@@ -8,7 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -22,14 +22,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.livros.Teste.BookService;
+import com.example.livros.Infra.BookService;
 import com.example.livros.Infra.IOUtils;
 import com.example.livros.Infra.SDCardUtils;
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Infra.utils.bibliotecalivroandroid.task.TaskListener;
-import com.example.livros.Model.Book;
 import com.example.livros.R;
-import com.example.livros.View.BookListActivity;
 import com.example.livros.View.YesOrNoDialog;
 import com.example.livros.View.itemsBottomNav.favorites.FavListActivity;
 
@@ -91,7 +89,7 @@ public class BooksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_books_list, container, false);
-
+/*
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -103,8 +101,8 @@ public class BooksFragment extends Fragment {
             }
 
             recyclerView.setAdapter(new BooksRecyclerViewAdapter(getContext(), BooksContent.ITEMS, mListener));
-        }
-       /* recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        } */
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
@@ -116,8 +114,9 @@ public class BooksFragment extends Fragment {
                 R.color.refresh_progress_2,
                 R.color.refresh_progress_3);
 
-        */
+
         //swipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
+        recyclerView.setAdapter(new BooksRecyclerViewAdapter(getContext(), BooksContent.ITEMS, mListener));
         return view;
 
     }
@@ -289,18 +288,18 @@ public class BooksFragment extends Fragment {
     // Task para fazer o download
     // Faça import da classe android.net.Uri;
     private class CompartilharTask implements TaskListener {
-        private final List<Book> selectedAds;
+        private final List<BooksContent.BookItem> selectedAds;
         // Lista de arquivos para compartilhar
         ArrayList<Uri> imageUris = new ArrayList<Uri>();
 
-        public CompartilharTask(List<Book> selectedAds) {
+        public CompartilharTask(List<BooksContent.BookItem> selectedAds) {
             this.selectedAds = selectedAds;
         }
 
         @Override
         public Object execute() throws Exception {
             if (selectedAds != null) {
-                for (Book c : selectedAds) {
+                for (BooksContent.BookItem c : selectedAds) {
                     // Faz o download da foto do anuncio para arquivo
                     // String url = c.urlFoto;
                     String url = "http://i.imgur.com/DvpvklR.png";
@@ -373,7 +372,7 @@ public class BooksFragment extends Fragment {
         // TODO: Update argument type and name
         //void onListFragmentInteraction(Book item);
 
-        void onListFragmentInteraction(Book mItem);
+        void onListFragmentInteraction(BooksContent.BookItem mItem);
 
     }
     public void search(String texto){
