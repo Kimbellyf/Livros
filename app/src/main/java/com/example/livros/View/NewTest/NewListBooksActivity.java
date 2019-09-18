@@ -23,6 +23,7 @@ import com.example.livros.R;
 import com.example.livros.View.Fragment.BookDetailsActivity;
 import com.example.livros.View.Fragment.BookFilterSelected;
 import com.example.livros.View.Fragment.BooksContent;
+import com.example.livros.View.Fragment.NewBookItem;
 import com.example.livros.View.TesteNavActivity;
 import com.example.livros.View.YesOrNoDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -221,7 +222,7 @@ public class NewListBooksActivity extends AppCompatActivity implements ItemOlder
         }
 
         @Override
-        public void onListFragmentInteraction(BooksContent.BookItem item) {
+        public void onListFragmentInteraction(NewBookItem item) {
             BookFilterSelected.instance.setBookSelected(item);
             mudarTela(BookDetailsActivity.class);
 

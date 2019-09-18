@@ -16,22 +16,22 @@ import com.example.livros.Infra.ImageUtils;
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.R;
 import com.example.livros.View.Fragment.BooksFragment.OnListFragmentInteractionListener;
-import com.example.livros.View.Fragment.BooksContent.BookItem;
+
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link BookItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link NewBookItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecyclerViewAdapter.BooksViewHolder> {
-    private final List<BookItem> mValues;
+    private final List<NewBookItem> mValues;
    // private final List<BookItem> mValues;
     private final Context context;
     private final OnListFragmentInteractionListener mListener;
 
-    public BooksRecyclerViewAdapter(Context context, List<BookItem> items, OnListFragmentInteractionListener listener) {
+    public BooksRecyclerViewAdapter(Context context, List<NewBookItem> items, OnListFragmentInteractionListener listener) {
         //this.books = books;
         this.context = context;
         mValues =items;
@@ -58,7 +58,7 @@ public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecycler
     public void onBindViewHolder(final BooksViewHolder holder, final int position) {
         // Livro da linha
         // Ad da linha
-        BooksContent.BookItem b = mValues.get(position);
+        NewBookItem b = mValues.get(position);
         // Livro da linha
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
@@ -112,7 +112,7 @@ public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecycler
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public BookItem mItem;
+        public NewBookItem mItem;
         CardView mCardView;
         public ImageView mImg;
         public TextView mTitle;

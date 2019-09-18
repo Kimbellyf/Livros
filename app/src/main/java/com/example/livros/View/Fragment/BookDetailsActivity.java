@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.livros.Infra.ImageUtils;
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.R;
 import com.example.livros.View.YesOrNoDialog;
@@ -43,7 +44,7 @@ public class BookDetailsActivity extends AppCompatActivity {
             }
         });
         toolbar.setTitleTextColor( getResources().getColor(R.color.colorWhite));
-        toolbar.setTitle(BookFilterSelected.instance.getBookSelected().getTitle());
+
     }
 
     public void encontrandoItensViews() {
@@ -72,8 +73,16 @@ public class BookDetailsActivity extends AppCompatActivity {
     }
 
     public void setarInfoView() {
-        BooksContent.BookItem bookSelected = BookFilterSelected.instance.getBookSelected();
+        NewBookItem bookSelected = BookFilterSelected.instance.getBookSelected();
         titleBook.setText(bookSelected.getTitle());
+        String urlImg =  bookSelected.getThumbnailUrl();
+
+        // Foto do Ad
+        ImageUtils.setImage(this,urlImg, photoBook);
+        bookShortDescription.setText(bookSelected.getShortDescription());
+        bookLongDescription.setText(bookSelected.getLongDescription());
+        isbnBook.setText(bookSelected.getIsbn());
+
        /* authorsNames.setText(("Autor(es) :" +bookSelected.getOwner().getSocialname()));
         SimpleDateFormat sdfDiaMesAno = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdfHoraMin = new SimpleDateFormat("HH:mm");

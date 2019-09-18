@@ -52,11 +52,11 @@ public class BooksFragment extends Fragment {
     protected RecyclerView recyclerView;
     private String tipo;
     //private List<Book> books;
-    private List<BooksContent.BookItem> books;
+    private List<NewBookItem> books;
     private SwipeRefreshLayout swipeLayout;
     private ActionMode actionMode;
     private Intent shareIntent;
-    private List<BooksContent.BookItem> tempBooks;
+    private List<NewBookItem> tempBooks;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -177,7 +177,7 @@ public class BooksFragment extends Fragment {
         if (actionMode != null) {
             actionMode.setTitle("Selecione os anúncios.");
             actionMode.setSubtitle(null);
-            List<BooksContent.BookItem> selectedAds = getSelectedAnuncios();
+            List<NewBookItem> selectedAds = getSelectedAnuncios();
             if (selectedAds.size() == 0) {
                 actionMode.finish();
             } else if (selectedAds.size() == 1) {
@@ -190,7 +190,7 @@ public class BooksFragment extends Fragment {
     }
 
     // Atualiza a share intent com os ads selecionados
-    private void updateShareIntent(List<BooksContent.BookItem> selectedAds) {
+    private void updateShareIntent(List<NewBookItem> selectedAds) {
         if (shareIntent != null) {
             // Texto com os anúncios
             shareIntent.putExtra(Intent.EXTRA_TEXT, "Anúncios: " + selectedAds);
@@ -198,9 +198,9 @@ public class BooksFragment extends Fragment {
     }
 
     // Retorna a lista de ads selecionados
-    private List<BooksContent.BookItem> getSelectedAnuncios() {
-        List<BooksContent.BookItem> list = new ArrayList<BooksContent.BookItem>();
-        for (BooksContent.BookItem c : books) {
+    private List<NewBookItem> getSelectedAnuncios() {
+        List<NewBookItem> list = new ArrayList<NewBookItem>();
+        for (NewBookItem c : books) {
             if (c.selected) {
                 list.add(c);
             }
@@ -233,7 +233,7 @@ public class BooksFragment extends Fragment {
 
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                final List<BooksContent.BookItem> selectedAds = getSelectedAnuncios();
+                    final List<NewBookItem> selectedAds = getSelectedAnuncios();
                 if (item.getItemId() == R.id.action_add_lista_desejo_finalm) {
                     YesOrNoDialog.show(getFragmentManager(), "Deseja adicionar esses anúncios que foram selecionados a sua lista de desejos?", new YesOrNoDialog.Callback() {
                         @Override
@@ -268,7 +268,7 @@ public class BooksFragment extends Fragment {
                 // Limpa o estado
                 actionMode = null;
                 // Configura todos os anuncios para não selecionados
-                for (BooksContent.BookItem c : books) {
+                for (NewBookItem c : books) {
                     c.selected = false;
                 }
                 recyclerView.getAdapter().notifyDataSetChanged();
@@ -288,18 +288,18 @@ public class BooksFragment extends Fragment {
     // Task para fazer o download
     // Faça import da classe android.net.Uri;
     private class CompartilharTask implements TaskListener {
-        private final List<BooksContent.BookItem> selectedAds;
+        private final List<NewBookItem> selectedAds;
         // Lista de arquivos para compartilhar
         ArrayList<Uri> imageUris = new ArrayList<Uri>();
 
-        public CompartilharTask(List<BooksContent.BookItem> selectedAds) {
+        public CompartilharTask(List<NewBookItem> selectedAds) {
             this.selectedAds = selectedAds;
         }
 
         @Override
         public Object execute() throws Exception {
             if (selectedAds != null) {
-                for (BooksContent.BookItem c : selectedAds) {
+                for (NewBookItem c : selectedAds) {
                     // Faz o download da foto do anuncio para arquivo
                     // String url = c.urlFoto;
                     String url = "http://i.imgur.com/DvpvklR.png";
@@ -372,12 +372,12 @@ public class BooksFragment extends Fragment {
         // TODO: Update argument type and name
         //void onListFragmentInteraction(Book item);
 
-        void onListFragmentInteraction(BooksContent.BookItem mItem);
+        void onListFragmentInteraction(NewBookItem mItem);
 
     }
     public void search(String texto){
-        tempBooks = new ArrayList<BooksContent.BookItem>();
-        for (BooksContent.BookItem book: books){
+        tempBooks = new ArrayList<NewBookItem>();
+        for (NewBookItem book: books){
             if (book.getTitle().toLowerCase().contains(texto)){
                 tempBooks.add(book);
             }

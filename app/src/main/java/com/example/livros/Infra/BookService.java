@@ -12,6 +12,7 @@ import com.example.livros.R;
 import com.example.livros.View.Fragment.BookDetailsActivity;
 import com.example.livros.View.Fragment.BookListActivity;
 import com.example.livros.View.Fragment.BooksContent;
+import com.example.livros.View.Fragment.NewBookItem;
 import com.example.livros.View.itemsBottomNav.favorites.FavListActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -51,12 +52,12 @@ public class BookService {
     }
 
 
-    private static List<BooksContent.BookItem> parserJSON(Context context, String json) throws IOException {
+    private static List<NewBookItem> parserJSON(Context context, String json) throws IOException {
         //Informa ao GSON que vamos converter uma lista de livros
         Type listType = new TypeToken<ArrayList<Book>>() {
         }.getType();
         //Faz o parser em apenas uma linha e cria a list
-        List<BooksContent.BookItem> ads = new Gson().fromJson(json, listType);
+        List<NewBookItem> ads = new Gson().fromJson(json, listType);
 
         return ads;
     }
@@ -108,14 +109,14 @@ public class BookService {
 
         return ads;
     }
-    public static List<BooksContent.BookItem> searchAllAdsByNome(String nome) throws IOException {
+    public static List<NewBookItem> searchAllAdsByNome(String nome) throws IOException {
         String url = URL_BASE + "/nome/" + nome; // << essa url ta errada, eu n sei qual url da p pesquisar pelo nome la na API
         ConnectAPI http = new ConnectAPI();
         String json = http.doGet(url);
         List litaAnunciosPorNome = parserJSONListaAnunciosComFor(json);
         return litaAnunciosPorNome;
     }
-    public static void addItensLista(List<BooksContent.BookItem> selectedAds) throws IOException, JSONException {
+    public static void addItensLista(List<NewBookItem> selectedAds) throws IOException, JSONException {
         if ((SessaoApplication.getInstance().getTipoDeUserLogado().equals("customer") &&
                 ((SessaoApplication.getInstance().getTelaAtual().equals(BookListActivity.class)
                         | SessaoApplication.getInstance().getTelaAtual().equals(BookDetailsActivity.class))))) {
@@ -126,8 +127,8 @@ public class BookService {
             //setar ainda qual tela ta
         }
     }
-    public static List<BooksContent.BookItem> getAnunciosByTipo(String tipo) throws IOException {
-        List ads = new ArrayList<BooksContent.BookItem>();
+    public static List<NewBookItem> getAnunciosByTipo(String tipo) throws IOException {
+        List ads = new ArrayList<NewBookItem>();
         String url = URL_BASE;
         String json = conectarServidorGet(url);
         Log.d("um json ai", json);
@@ -137,8 +138,8 @@ public class BookService {
         return ads;
     }
 
-    public static List<BooksContent.BookItem> parserJSONListaAnunciosComFor(String json) throws IOException {
-        List<BooksContent.BookItem> books = new ArrayList<BooksContent.BookItem>();
+    public static List<NewBookItem> parserJSONListaAnunciosComFor(String json) throws IOException {
+        List<NewBookItem> books = new ArrayList<NewBookItem>();
         try {
             JSONObject objetoJson = new JSONObject(json);
             JSONArray jsonBooks = null;
@@ -152,7 +153,7 @@ public class BookService {
             //JSONArray jsonBooks = new JSONArray(json);
             for (int i = 0; i < jsonBooks.length(); i++) {
                 JSONObject jsonBook = jsonBooks.getJSONObject(i);
-                BooksContent.BookItem c = new BooksContent.BookItem();
+                NewBookItem c = new NewBookItem();
                 //Lê as info de cada anuncio
                 c.setTitle(jsonBook.optString("title"));
                // c.setThumbnailUrl(jsonBook.optString("thumbnailUrl"));
@@ -250,13 +251,13 @@ public class BookService {
 
 
     // Faz a requisição HTTP, cria a lista de anuncios e salva o JSON em arquivo
-    public static List<BooksContent.BookItem> getAnunciosFromWebService(Context context, int tipo) throws IOException {
+    public static List<NewBookItem> getAnunciosFromWebService(Context context, int tipo) throws IOException {
         String tipoString = getTipo(tipo);
         String url = URL_BASE;
         Log.d(TAG, "URL: " + url);
         ConnectAPI http = new ConnectAPI();
         String json = http.doGet(url);
-        List<BooksContent.BookItem> ads = parserJSON(context, json);
+        List<NewBookItem> ads = parserJSON(context, json);
         salvaArquivoNaMemoriaInterna(context, url, json);
         // Depois de buscar salva os ads
         //salvarAnuncios(context, tipo, ads);
@@ -280,7 +281,7 @@ public class BookService {
     }
 
     // Abre o arquivo salvo, se existir, e cria a lista de anuncios
-    public static List<BooksContent.BookItem> getAnunciosFromArquivo(Context context, int tipo) throws IOException {
+    public static List<NewBookItem> getAnunciosFromArquivo(Context context, int tipo) throws IOException {
         String tipoString = getTipo(tipo);
         String fileName = String.format("anuncios_%s.json", tipoString);
         Log.d(TAG, "Abrindo arquivo: " + fileName);
@@ -290,7 +291,7 @@ public class BookService {
             Log.d(TAG, "Arquivo " + fileName + " não encontrado.");
             return null;
         }
-        List<BooksContent.BookItem> ads = parserJSON(context, json);
+        List<NewBookItem> ads = parserJSON(context, json);
         Log.d(TAG, "Retornando ads do arquivo " + fileName + ".");
         return ads;
     }

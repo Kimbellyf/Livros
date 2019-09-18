@@ -19,6 +19,7 @@ import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
 import com.example.livros.View.Fragment.BooksContent;
+import com.example.livros.View.Fragment.NewBookItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,6 +140,6 @@ public class ItemOlderFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(BooksContent.BookItem mItem);
+        void onListFragmentInteraction(NewBookItem mItem);
     }
 }

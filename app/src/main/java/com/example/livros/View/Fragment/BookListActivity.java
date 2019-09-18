@@ -11,21 +11,32 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livros.Infra.SessaoApplication;
+import com.example.livros.Model.Book;
 import com.example.livros.R;
 import com.example.livros.View.TesteNavActivity;
 import com.example.livros.View.YesOrNoDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BookListActivity extends AppCompatActivity implements BooksFragment.OnListFragmentInteractionListener{
     private BottomNavigationView bottomNavigationView;
     private CoordinatorLayout coordinatorLayout;
     private ViewPager viewPager;
     private Toolbar toolbar;
+    private List<Book> booksh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +44,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
         setContentView(R.layout.activity_book_list);
         acoesReferentesAoBottomNavigation();
         configToolbar();
+        buscandoDadosComRetrofit();
         criarFragment(savedInstanceState);
     }
     private void configToolbar(){
@@ -177,9 +189,51 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
     }
 
     @Override
-    public void onListFragmentInteraction(BooksContent.BookItem item) {
+    public void onListFragmentInteraction(NewBookItem item) {
         BookFilterSelected.instance.setBookSelected(item);
         mudarTela(BookDetailsActivity.class);
 
     }
+
+
+    public void buscandoDadosComRetrofit(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.myjson.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        Call<List<Book>> call = jsonPlaceHolderApi.getbooks();
+        call.enqueue(new Callback<List<Book>>() {
+            @Override
+            public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
+                if(!response.isSuccessful()){
+                    //testViewResult.setText(("Code:" + response.code()));
+                    return;
+                }
+                List<Book> books = response.body();
+                booksh = books;
+                SessaoApplication.setBooklistatmoment(books);
+                Log.d("testesessao",SessaoApplication.getBooklistatmoment().toString());
+                Log.i("exr",SessaoApplication.getBooklistatmoment().toString());
+
+                for (Book book: books){
+                    String content = "";
+                    content += "Title:" + book.getTitle() + "\n";
+                    content += "Short Description:" + book.getShortDescription() + "\n\n";
+
+                    //testViewResult.append(content);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Book>> call, Throwable t) {
+                //testViewResult.setText(t.getMessage());
+            }
+
+        });
+
+
+    }
+
 }

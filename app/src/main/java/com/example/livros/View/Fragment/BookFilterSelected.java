@@ -26,15 +26,15 @@ public class BookFilterSelected {
         setValor("BookFilterSelected.anunciosList", anunciosList);
     }
 
-    public ArrayList<BooksContent.BookItem> getAnunciosList() {
-        return (ArrayList<BooksContent.BookItem>) values.get("BookFilterSelected.anunciosList");
+    public ArrayList<NewBookItem> getAnunciosList() {
+        return (ArrayList<NewBookItem>) values.get("BookFilterSelected.anunciosList");
     }
 
-    public BooksContent.BookItem getBookSelected() {
-        return (BooksContent.BookItem) values.get("sessao.AnuncioSelecionado");
+    public NewBookItem getBookSelected() {
+        return (NewBookItem) values.get("sessao.AnuncioSelecionado");
     }
 
-    public void setBookSelected(BooksContent.BookItem bookSelected) {
+    public void setBookSelected(NewBookItem bookSelected) {
         setValor("sessao.AnuncioSelecionado", bookSelected);
     }
 
