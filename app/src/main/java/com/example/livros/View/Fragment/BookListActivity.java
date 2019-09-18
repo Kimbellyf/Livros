@@ -45,6 +45,14 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
         acoesReferentesAoBottomNavigation();
         configToolbar();
         buscandoDadosComRetrofit();
+        NewBookItem newBookItem = new NewBookItem();
+        newBookItem.setTitle("Kim title");
+        newBookItem.setThumbnailUrl("https://i.ytimg.com/vi/BgRvUZkNG3w/maxresdefault.jpg");
+        BooksContent.addItem(newBookItem);
+        NewBookItem newBookItemtwo = new NewBookItem();
+        newBookItem.setTitle("Paulo title");
+        newBookItem.setThumbnailUrl("https://i.ytimg.com/vi/BgRvUZkNG3w/maxresdefault.jpg");
+        BooksContent.addItem(newBookItemtwo);
         criarFragment(savedInstanceState);
     }
     private void configToolbar(){
@@ -220,6 +228,11 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
                     String content = "";
                     content += "Title:" + book.getTitle() + "\n";
                     content += "Short Description:" + book.getShortDescription() + "\n\n";
+                    NewBookItem newBook = new NewBookItem();
+                    newBook.setTitle(book.getTitle());
+                    newBook.setThumbnailUrl(book.getThumbnailUrl());
+                    newBook.setShortDescription(book.getShortDescription());
+                    BooksContent.addItem(newBook);
 
                     //testViewResult.append(content);
 
