@@ -24,11 +24,12 @@
         android:roundIcon="@mipmap/ic_novo_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.authors.NamesAuthorsActivity"></activity>
         <activity
             android:name=".View.TesteAgain.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.categories.categories.NamesCategoriesActivity" />
+        <activity android:name=".View.categories.NamesCategoriesActivity" />
         <activity android:name=".View.NewTest.NewListBooksActivity" />
         <activity
             android:name=".View.TesteNavActivity"
@@ -41,9 +42,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.Fragment.BookListActivity" />
-        <activity android:name=".View.Fragment.BookDetailsActivity" />
-        <activity android:name=".View.itemsBottomNav.favorites.FavListActivity" />
+        <activity android:name=".View.booksgeneral.BookListActivity" />
+        <activity android:name=".View.booksgeneral.BookDetailsActivity" />
+        <activity android:name=".View.favorites.FavListActivity" />
         <activity android:name=".View.MainActivity" />
     </application>
 

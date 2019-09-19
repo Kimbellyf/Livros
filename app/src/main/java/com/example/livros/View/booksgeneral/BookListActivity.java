@@ -1,4 +1,4 @@
-package com.example.livros.View.Fragment;
+package com.example.livros.View.booksgeneral;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +21,10 @@ import com.example.livros.Model.Book;
 import com.example.livros.R;
 import com.example.livros.View.TesteNavActivity;
 import com.example.livros.View.YesOrNoDialog;
-import com.example.livros.View.categories.categories.NamesCategoriesActivity;
-import com.example.livros.View.categories.categories.dummy.CategoriesContent;
+import com.example.livros.View.authors.NamesAuthorsActivity;
+import com.example.livros.View.authors.dummy.AuthorsContent;
+import com.example.livros.View.categories.NamesCategoriesActivity;
+import com.example.livros.View.categories.dummy.CategoriesContent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -134,7 +136,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
                     return true;
                 }
                 else if (item.getItemId()==R.id.action_authors_books) {
-                    trocarFragmento("authorslist");
+                    mudarTela(NamesAuthorsActivity.class);;
                     BookFilterSelected.instance.setTipoListaPraMostrarSubCategoriaBottomNavCliente("casa de festa");
                     return true;
                 }else if (item.getItemId()==R.id.action_your_configs) {
@@ -232,8 +234,8 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
                    // book.getAuthors();
                     book.newsobjauthors();
                     book.newsobjCategories();
-                    //testViewResult.append(content);
                     CategoriesContent.setListITEMS(book.getCategoriesO());
+                    AuthorsContent.setListITEMS(book.getAuthorsO());
 
                 }
 

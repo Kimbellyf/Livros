@@ -1,4 +1,4 @@
-package com.example.livros.View.Fragment;
+package com.example.livros.View.booksgeneral;
 
 import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Model.Book;

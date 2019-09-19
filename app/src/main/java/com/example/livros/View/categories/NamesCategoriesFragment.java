@@ -1,4 +1,4 @@
-package com.example.livros.View.categories.categories;
+package com.example.livros.View.categories;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.livros.Model.Category;
 import com.example.livros.R;
-import com.example.livros.View.categories.categories.dummy.CategoriesContent;
+import com.example.livros.View.categories.dummy.CategoriesContent;
 
 
 /**
@@ -60,7 +60,7 @@ public class NamesCategoriesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_testeagain_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_name_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {

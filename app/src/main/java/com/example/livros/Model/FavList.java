@@ -1,7 +1,7 @@
 package com.example.livros.Model;
 
 
-import com.example.livros.View.Fragment.NewBookItem;
+import com.example.livros.View.booksgeneral.NewBookItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;

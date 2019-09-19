@@ -1,4 +1,4 @@
-package com.example.livros.View.itemsBottomNav.favorites;
+package com.example.livros.View.favorites;
 
 import androidx.appcompat.app.AppCompatActivity;
 

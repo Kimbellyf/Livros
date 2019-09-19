@@ -134,4 +134,8 @@
     <string name="msg_error_indisp_conexion">Conexão indisponível</string>
     <string name="ic_categories_books">Categorias</string>
     <string name="ic_authors_books">Autores</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_book_list_authors">Lista de autores</string>
 </resources>

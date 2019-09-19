@@ -1,4 +1,4 @@
-package com.example.livros.View.categories.categories;
+package com.example.livros.View.categories;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -53,7 +53,8 @@ public class NamesCategoriesActivity extends AppCompatActivity implements NamesC
     }
     @Override
     public void onBackPressed() {
-        this.mudarTela(MainActivity.class);
+        //this.mudarTela(MainActivity.class);
+        finish();
 
     }
 

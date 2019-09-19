@@ -1,10 +1,9 @@
-package com.example.livros.View.Fragment;
+package com.example.livros.View.booksgeneral;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.livros.Infra.ImageUtils;
-import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.R;
-import com.example.livros.View.Fragment.BooksFragment.OnListFragmentInteractionListener;
+import com.example.livros.View.booksgeneral.BooksFragment.OnListFragmentInteractionListener;
 
 
 import java.util.List;

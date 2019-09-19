@@ -1,8 +1,7 @@
-package com.example.livros.View.categories.categories.dummy;
+package com.example.livros.View.categories.dummy;
 
 import android.util.Log;
 
-import com.example.livros.Model.Author;
 import com.example.livros.Model.Category;
 
 import java.util.ArrayList;

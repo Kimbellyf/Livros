@@ -3,17 +3,13 @@ package com.example.livros.Infra;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.livros.Infra.ConnectAPI;
-import com.example.livros.Infra.IOUtils;
-import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Infra.utils.bibliotecalivroandroid.utils.FileUtils;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
-import com.example.livros.View.Fragment.BookDetailsActivity;
-import com.example.livros.View.Fragment.BookListActivity;
-import com.example.livros.View.Fragment.BooksContent;
-import com.example.livros.View.Fragment.NewBookItem;
-import com.example.livros.View.itemsBottomNav.favorites.FavListActivity;
+import com.example.livros.View.booksgeneral.BookDetailsActivity;
+import com.example.livros.View.booksgeneral.BookListActivity;
+import com.example.livros.View.booksgeneral.NewBookItem;
+import com.example.livros.View.favorites.FavListActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

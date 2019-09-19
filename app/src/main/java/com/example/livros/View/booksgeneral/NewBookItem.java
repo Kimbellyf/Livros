@@ -1,10 +1,9 @@
-package com.example.livros.View.Fragment;
+package com.example.livros.View.booksgeneral;
 
 import com.example.livros.Model.Author;
 import com.example.livros.Model.Category;
 import com.example.livros.Model.PublishedDate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NewBookItem {

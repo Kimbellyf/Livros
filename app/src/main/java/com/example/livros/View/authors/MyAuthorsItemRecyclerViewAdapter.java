@@ -1,4 +1,4 @@
-package com.example.livros.View.categories;
+package com.example.livros.View.authors;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -7,23 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.livros.Model.Author;
 import com.example.livros.R;
-import com.example.livros.View.categories.ItemNamesFragment.OnListFragmentInteractionListener;
-import com.example.livros.View.categories.dummy.DummyContentTwo.DummyItemTwo;
+import com.example.livros.View.authors.AuthorsNamesFragment.OnListFragmentInteractionListener;
+
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItemTwo} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Author} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyItemNamesRecyclerViewAdapter extends RecyclerView.Adapter<MyItemNamesRecyclerViewAdapter.ViewHolder> {
+public class MyAuthorsItemRecyclerViewAdapter extends RecyclerView.Adapter<MyAuthorsItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItemTwo> mValues;
+    private final List<Author> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyItemNamesRecyclerViewAdapter(List<DummyItemTwo> items, OnListFragmentInteractionListener listener) {
+    public MyAuthorsItemRecyclerViewAdapter(List<Author> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -31,7 +32,7 @@ public class MyItemNamesRecyclerViewAdapter extends RecyclerView.Adapter<MyItemN
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_itemnames_adapter, parent, false);
+                .inflate(R.layout.fragment_authorsitem, parent, false);
         return new ViewHolder(view);
     }
 
@@ -39,7 +40,7 @@ public class MyItemNamesRecyclerViewAdapter extends RecyclerView.Adapter<MyItemN
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mContentView.setText(mValues.get(position).getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +63,7 @@ public class MyItemNamesRecyclerViewAdapter extends RecyclerView.Adapter<MyItemN
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItemTwo mItem;
+        public Author mItem;
 
         public ViewHolder(View view) {
             super(view);

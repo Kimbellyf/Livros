@@ -1,4 +1,4 @@
-package com.example.livros.View.categories.categories;
+package com.example.livros.View.categories;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,7 +32,7 @@ public class NamesCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Nam
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_testeagain_adapter, parent, false);
+                .inflate(R.layout.fragment_name_adapter, parent, false);
         return new ViewHolder(view);
     }
 

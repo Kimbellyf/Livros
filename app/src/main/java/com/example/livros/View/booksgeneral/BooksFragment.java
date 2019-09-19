@@ -1,4 +1,4 @@
-package com.example.livros.View.Fragment;
+package com.example.livros.View.booksgeneral;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +29,7 @@ import com.example.livros.Infra.SessaoApplication;
 import com.example.livros.Infra.utils.bibliotecalivroandroid.task.TaskListener;
 import com.example.livros.R;
 import com.example.livros.View.YesOrNoDialog;
-import com.example.livros.View.itemsBottomNav.favorites.FavListActivity;
+import com.example.livros.View.favorites.FavListActivity;
 
 import java.io.File;
 import java.net.SocketTimeoutException;

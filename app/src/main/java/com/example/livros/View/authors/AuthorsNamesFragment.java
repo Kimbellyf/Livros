@@ -1,4 +1,4 @@
-package com.example.livros.View.categories;
+package com.example.livros.View.authors;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.livros.Model.Author;
 import com.example.livros.R;
-import com.example.livros.View.categories.dummy.DummyContentTwo;
+import com.example.livros.View.authors.dummy.AuthorsContent;
+
 
 /**
  * A fragment representing a list of Items.
@@ -21,7 +23,7 @@ import com.example.livros.View.categories.dummy.DummyContentTwo;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ItemNamesFragment extends Fragment {
+public class AuthorsNamesFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -33,13 +35,13 @@ public class ItemNamesFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ItemNamesFragment() {
+    public AuthorsNamesFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ItemNamesFragment newInstance(int columnCount) {
-        ItemNamesFragment fragment = new ItemNamesFragment();
+    public static AuthorsNamesFragment newInstance(int columnCount) {
+        AuthorsNamesFragment fragment = new AuthorsNamesFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -58,7 +60,7 @@ public class ItemNamesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_itemname_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_authorsitem_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -69,7 +71,7 @@ public class ItemNamesFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemNamesRecyclerViewAdapter(DummyContentTwo.ITEMS, mListener));
+            recyclerView.setAdapter(new MyAuthorsItemRecyclerViewAdapter(AuthorsContent.ITEMS, mListener));
         }
         return view;
     }
@@ -104,6 +106,6 @@ public class ItemNamesFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyContentTwo.DummyItemTwo item);
+        void onListFragmentInteraction(Author item);
     }
 }

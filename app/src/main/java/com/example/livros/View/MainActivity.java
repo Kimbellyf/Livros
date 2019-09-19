@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.livros.View.Fragment.JsonPlaceHolderApi;
+import com.example.livros.View.booksgeneral.JsonPlaceHolderApi;
 import com.example.livros.Model.Book;
 import com.example.livros.R;
 
