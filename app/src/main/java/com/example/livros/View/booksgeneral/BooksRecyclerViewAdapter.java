@@ -63,8 +63,10 @@ public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecycler
         //holder.mContentView.setText(mValues.get(position).content);
         // Atualiza os valores nas views
         holder.mTitle.setText(mValues.get(position).getTitle());
-        //holder.mAuthorsNames.setText(mValues.get(position).AuthorsName);
+        holder.mAuthorsNames.setText(mValues.get(position).getAuthors().toString());
         holder.mShortDescription.setText(mValues.get(position).getShortDescription());
+       // holder.mLongDescription.setText(mValues.get(position).getLongDescription());
+
 
         String urlImg =  mValues.get(position).getThumbnailUrl();
 
@@ -116,6 +118,7 @@ public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecycler
         public TextView mTitle;
         public TextView mAuthorsNames;
         TextView mShortDescription;
+        TextView mLongDescription;
         private ProgressBar progress;
 
         public BooksViewHolder(View view) {
@@ -129,6 +132,7 @@ public class BooksRecyclerViewAdapter extends RecyclerView.Adapter<BooksRecycler
             mTitle = (TextView) view.findViewById(R.id.textViewTitleBook);
             mAuthorsNames = (TextView) view.findViewById(R.id.textViewAuthorName);
             mShortDescription = (TextView) view.findViewById(R.id.textViewShortDescription);
+            mLongDescription = (TextView) view.findViewById(R.id.textViewLongDescription);
             progress = (ProgressBar) view.findViewById(R.id.progress);
         }
 

@@ -1,9 +1,12 @@
 package com.example.livros.View.booksgeneral;
 
+import android.util.Log;
+
 import com.example.livros.Model.Author;
 import com.example.livros.Model.Category;
 import com.example.livros.Model.PublishedDate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewBookItem {
@@ -16,25 +19,38 @@ public class NewBookItem {
     private String shortDescription;
     private String longDescription ;
     private String  status ;
-    private String pagecount;
-    private List<Author> authorsO;
-    private List<Category> categoriesO;
+    private List<Author> allAuthorsOfBook = new ArrayList<>();
+    private List<Category> categoriesO = new ArrayList<Category>();
     private List<PublishedDate> publishedDateO;
     private String pageCount;
-    private List<String> authors;
-    private List<String> categories;
-
-    public NewBookItem(String id, String title, String shortDescription) {
-        this.id = id;
+    //private List<String> authors;
+    //private List<Author> authors;
+    private List<String> authors = new ArrayList<>();
+    private List<String> categories = new ArrayList<>();
+    /*    public Book(String valueOf, String s, String makeDetails) {
     }
+    //private String    ; lista de allAuthorsOfBook
+    //lista categoriesO
+    //lista publishdate - q contem date
+    */
+    private List<Author> authorsO = new ArrayList<Author>();
+
 
     public NewBookItem() {
+        this.shortDescription ="";
+        this.longDescription = "";
         this.title="Book name example";
-        this.longDescription="Long description";
-        this.shortDescription="Short description";
+        this.longDescription=" ";
+        this.shortDescription=" ";
         this.status="PUBLISH";
         this.isbn="00";
         this.thumbnailUrl="";
+
+    }
+
+
+    public NewBookItem(String id, String title, String shortDescription) {
+        this.id = id;
     }
 
 
@@ -105,6 +121,21 @@ public class NewBookItem {
 
     public List<String> getAuthors() {
         return authors;
+
+    }
+    public void newsobjauthors(){
+        //add author a outra lista
+        if (authors.isEmpty()){
+
+        }else{
+            for (String string: authors){
+                Log.d("authorstring",string);
+                Author authorhere = new Author();
+                authorhere.setName(string);
+                authorsO.add(authorhere);
+            }
+
+        }
     }
 
     public void setAuthors(List<String> authors) {
@@ -114,14 +145,27 @@ public class NewBookItem {
     public List<String> getCategories() {
         return categories;
     }
+    public void newsobjCategories(){
+        //add category a outra lista
+        if (categories.isEmpty()){
+
+        }else{
+            for (String string: categories){
+                Log.d("categories",string);
+                Category categoryhere = new Category();
+                categoryhere.setName(string);
+                categoriesO.add(categoryhere);
+            }
+        }
+    }
 
     public void setCategories(List<String> categories) {
         this.categories = categories;
     }
 
-
     public List<Author> getAuthorsO() {
         return authorsO;
+
     }
 
     public void setAuthorsO(List<Author> authorsO) {

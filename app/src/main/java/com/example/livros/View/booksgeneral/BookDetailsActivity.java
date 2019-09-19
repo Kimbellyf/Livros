@@ -82,6 +82,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         bookShortDescription.setText(bookSelected.getShortDescription());
         bookLongDescription.setText(bookSelected.getLongDescription());
         isbnBook.setText(bookSelected.getIsbn());
+        authorsNames.setText(bookSelected.getAuthors().toString());
 
        /* authorsNames.setText(("Autor(es) :" +bookSelected.getOwner().getSocialname()));
         SimpleDateFormat sdfDiaMesAno = new SimpleDateFormat("dd/MM/yyyy");

@@ -172,7 +172,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
         this.mudarTela(TesteNavActivity.class);
     }
     public void exibirMsgEAgirSeQuiserSairRealmente(){
-        if(SessaoApplication.getInstance().getTipoDeUserLogado().equals("customer")) {
+        /*if(SessaoApplication.getInstance().getTipoDeUserLogado().equals("customer")) {
             YesOrNoDialog.show(getSupportFragmentManager(), "Deseja realmente sair da sua conta ?", new YesOrNoDialog.Callback() {
                 @Override
                 public void metodoSimAoDialog() {
@@ -183,6 +183,9 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
         }else{
             mudarTela(TesteNavActivity.class);
         }
+
+         */
+        finish();
     }
     public void toFavBookList(){
         this.mudarTela(TesteNavActivity.class);
@@ -230,6 +233,14 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
                     newBook.setTitle(book.getTitle());
                     newBook.setThumbnailUrl(book.getThumbnailUrl());
                     newBook.setShortDescription(book.getShortDescription());
+                    newBook.setLongDescription(book.getLongDescription());
+                    newBook.setAuthors(book.getAuthors());
+                    newBook.setCategories(book.getCategories());
+                    newBook.setIsbn(book.getIsbn());
+                    newBook.setPageCount(book.getPageCount());
+                    newBook.setStatus(book.getStatus());
+                    newBook.setAuthorsO(book.getAuthorsO());
+                    newBook.setCategoriesO(book.getCategoriesO());
                     BooksContent.addItem(newBook);
                    // book.getAuthors();
                     book.newsobjauthors();

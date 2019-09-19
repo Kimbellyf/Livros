@@ -41,7 +41,6 @@ public class NamesCategoriesActivity extends AppCompatActivity implements NamesC
         //getSupportActionBar().setTitle(getString(getIntent().getIntExtra("tipo",6)));
         if (savedInstanceState == null) {
             NamesCategoriesFragment frag = new NamesCategoriesFragment();
-            //AnunciosFragment frag = new AnunciosFragment();
             frag.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction().replace(R.id.containerFAV, frag).commit();
         }
