@@ -3,6 +3,8 @@ package com.example.livros.Model;
 import java.util.List;
 
 public class Category {
+    public String id;
+    public String content;
     private String name;
     private List<Book> booksofcategory;
 

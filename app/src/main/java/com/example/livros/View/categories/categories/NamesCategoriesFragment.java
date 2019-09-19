@@ -12,9 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.livros.Model.Category;
 import com.example.livros.R;
 import com.example.livros.View.categories.categories.dummy.CategoriesContent;
-import com.example.livros.View.categories.categories.dummy.CategoriesContent.CategoriesItem;
+
 
 /**
  * A fragment representing a list of Items.
@@ -105,6 +106,6 @@ public class NamesCategoriesFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(CategoriesItem item);
+        void onListFragmentInteraction(Category item);
     }
 }

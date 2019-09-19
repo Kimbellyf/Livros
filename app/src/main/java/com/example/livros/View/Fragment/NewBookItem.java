@@ -1,9 +1,14 @@
 package com.example.livros.View.Fragment;
 
+import com.example.livros.Model.Author;
+import com.example.livros.Model.Category;
+import com.example.livros.Model.PublishedDate;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewBookItem {
     public  String id;
-    public  String content;
-    public  String details;
     public boolean selected;
 
     private String title;
@@ -12,11 +17,16 @@ public class NewBookItem {
     private String shortDescription;
     private String longDescription ;
     private String  status ;
+    private String pagecount;
+    private List<Author> authorsO;
+    private List<Category> categoriesO;
+    private List<PublishedDate> publishedDateO;
+    private String pageCount;
+    private List<String> authors;
+    private List<String> categories;
 
-    public NewBookItem(String id, String content, String details) {
+    public NewBookItem(String id, String title, String shortDescription) {
         this.id = id;
-        this.content = content;
-        this.details = details;
     }
 
     public NewBookItem() {
@@ -33,13 +43,10 @@ public class NewBookItem {
         return id;
     }
 
-    public String getContent() {
-        return content;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getDetails() {
-        return details;
-    }
 
     public String getTitle() {
         return title;
@@ -89,8 +96,75 @@ public class NewBookItem {
         this.status = status;
     }
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public List<String> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+
+
+    public List<Author> getAuthorsO() {
+        return authorsO;
+    }
+
+    public void setAuthorsO(List<Author> authorsO) {
+        this.authorsO = authorsO;
+    }
+    public List<Category> getCategoriesO() {
+        return categoriesO;
+    }
+
+    public void setCategoriesO(List<Category> categoriesO) {
+        this.categoriesO = categoriesO;
+    }
+    public List<PublishedDate> getPublishedDateO() {
+        return publishedDateO;
+    }
+
+    public void setPublishedDateO(List<PublishedDate> publishedDateO) {
+        this.publishedDateO = publishedDateO;
+    }
+    public String getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(String pageCount) {
+        this.pageCount = pageCount;
+    }
+
     @Override
     public String toString() {
-        return content;
+        return "Book{" +
+                "selected=" + selected +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
+                ", authorshere='" + authors + '\'' +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", longDescription='" + longDescription + '\'' +
+                ", status='" + status + '\'' +
+                ", authorsO=" + authorsO +
+                ", categoriesO=" + categoriesO +
+                ", publishedDateO=" + publishedDateO +
+                '}';
     }
 }

@@ -21,6 +21,8 @@ import com.example.livros.Model.Book;
 import com.example.livros.R;
 import com.example.livros.View.TesteNavActivity;
 import com.example.livros.View.YesOrNoDialog;
+import com.example.livros.View.categories.categories.NamesCategoriesActivity;
+import com.example.livros.View.categories.categories.dummy.CategoriesContent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -45,14 +47,7 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
         acoesReferentesAoBottomNavigation();
         configToolbar();
         buscandoDadosComRetrofit();
-        NewBookItem newBookItem = new NewBookItem();
-        newBookItem.setTitle("Kim title");
-        newBookItem.setThumbnailUrl("https://i.ytimg.com/vi/BgRvUZkNG3w/maxresdefault.jpg");
-        BooksContent.addItem(newBookItem);
-        NewBookItem newBookItemtwo = new NewBookItem();
-        newBookItem.setTitle("Paulo title");
-        newBookItem.setThumbnailUrl("https://i.ytimg.com/vi/BgRvUZkNG3w/maxresdefault.jpg");
-        BooksContent.addItem(newBookItemtwo);
+
         criarFragment(savedInstanceState);
     }
     private void configToolbar(){
@@ -128,7 +123,8 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
                     return true;
 
                 }else if (item.getItemId()==R.id.action_categories_books) {
-                    trocarFragmento("categorieslist");
+                    //trocarFragmento("categorieslist");
+                    mudarTela(NamesCategoriesActivity.class);
                     BookFilterSelected.instance.setTipoListaPraMostrarSubCategoriaBottomNavCliente("casa de festa");
                     return true;
                 }
@@ -233,10 +229,14 @@ public class BookListActivity extends AppCompatActivity implements BooksFragment
                     newBook.setThumbnailUrl(book.getThumbnailUrl());
                     newBook.setShortDescription(book.getShortDescription());
                     BooksContent.addItem(newBook);
-
+                   // book.getAuthors();
+                    book.newsobjauthors();
+                    book.newsobjCategories();
                     //testViewResult.append(content);
+                    CategoriesContent.setListITEMS(book.getCategoriesO());
 
                 }
+
             }
 
             @Override

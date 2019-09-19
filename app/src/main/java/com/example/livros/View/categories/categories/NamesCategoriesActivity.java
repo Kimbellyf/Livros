@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.livros.Model.Category;
 import com.example.livros.R;
 import com.example.livros.View.MainActivity;
-import com.example.livros.View.categories.categories.dummy.CategoriesContent;
+
 
 
 public class NamesCategoriesActivity extends AppCompatActivity implements NamesCategoriesFragment.OnListFragmentInteractionListener {
@@ -57,7 +58,7 @@ public class NamesCategoriesActivity extends AppCompatActivity implements NamesC
     }
 
     @Override
-    public void onListFragmentInteraction(CategoriesContent.CategoriesItem item) {
+    public void onListFragmentInteraction(Category item) {
 
     }
 }

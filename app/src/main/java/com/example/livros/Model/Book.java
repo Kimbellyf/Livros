@@ -1,5 +1,8 @@
 package com.example.livros.Model;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
@@ -11,34 +14,40 @@ public class Book {
     private String shortDescription;
     private String longDescription ;
     private String  status ;
-    private List<Author> authorsO;
-    private List<Category> categoriesO;
+    private List<Author> allAuthorsOfBook = new ArrayList<>();
+    private List<Category> categoriesO = new ArrayList<Category>();
     private List<PublishedDate> publishedDateO;
     private String pageCount;
-    private List<String> authors;
-    private List<String> categories;
+    //private List<String> authors;
+    //private List<Author> authors;
+    private List<String> authors = new ArrayList<>();
+    private List<String> categories = new ArrayList<>();
     /*    public Book(String valueOf, String s, String makeDetails) {
     }
-    //private String    ; lista de authorsO
+    //private String    ; lista de allAuthorsOfBook
     //lista categoriesO
     //lista publishdate - q contem date
-*/
+    */
+    private List<Author> authorsO = new ArrayList<Author>();
 
 
     public Book() {
        this.shortDescription ="";
        this.longDescription = "";
+       this.title="Book name example";
+       this.longDescription="Long description";
+       this.shortDescription="Short description";
+       this.status="PUBLISH";
+       this.isbn="00";
+       this.thumbnailUrl="";
 
     }
 
 
-    public boolean isSelected() {
-        return selected;
+    public Book(String id, String title, String shortDescription) {
+        this.id = id;
     }
 
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
 
     public String getId() {
         return id;
@@ -47,25 +56,6 @@ public class Book {
     public void setId(String id) {
         this.id = id;
     }
-
-    public List<String> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
-    }
-
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
-    }
-
-
-
 
 
     public String getTitle() {
@@ -116,8 +106,61 @@ public class Book {
         this.status = status;
     }
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public List<String> getAuthors() {
+        return authors;
+
+    }
+    public void newsobjauthors(){
+        //add author a outra lista
+        if (authors.isEmpty()){
+
+        }else{
+            for (String string: authors){
+                Log.d("authorstring",string);
+                Author authorhere = new Author();
+                authorhere.setName(string);
+                authorsO.add(authorhere);
+            }
+
+        }
+    }
+
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+    public void newsobjCategories(){
+        //add category a outra lista
+        if (categories.isEmpty()){
+
+        }else{
+            for (String string: categories){
+                Log.d("categories",string);
+                Category categoryhere = new Category();
+                categoryhere.setName(string);
+                categoriesO.add(categoryhere);
+            }
+        }
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+
     public List<Author> getAuthorsO() {
         return authorsO;
+
     }
 
     public void setAuthorsO(List<Author> authorsO) {
@@ -153,6 +196,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", thumbnailUrl='" + thumbnailUrl + '\'' +
+                ", authorshere='" + authors + '\'' +
                 ", shortDescription='" + shortDescription + '\'' +
                 ", longDescription='" + longDescription + '\'' +
                 ", status='" + status + '\'' +

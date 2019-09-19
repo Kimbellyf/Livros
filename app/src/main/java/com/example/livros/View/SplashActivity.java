@@ -8,7 +8,7 @@ import android.os.Handler;
 
 import com.example.livros.R;
 import com.example.livros.View.Fragment.BookListActivity;
-import com.example.livros.View.NewTest.NewListBooksActivity;
+
 import com.example.livros.View.TesteAgain.ScrollingActivity;
 
 public class SplashActivity extends AppCompatActivity implements Runnable {

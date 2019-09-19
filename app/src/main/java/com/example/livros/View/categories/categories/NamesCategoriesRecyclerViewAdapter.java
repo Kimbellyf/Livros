@@ -7,23 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.livros.Model.Category;
 import com.example.livros.R;
 
-import com.example.livros.View.categories.categories.dummy.CategoriesContent.CategoriesItem;
+
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link CategoriesItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Category} and makes a call to the
  * specified { OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class NamesCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<NamesCategoriesRecyclerViewAdapter.ViewHolder> {
 
-    private final List<CategoriesItem> mValues;
+    private final List<Category> mValues;
     private final NamesCategoriesFragment.OnListFragmentInteractionListener mListener;
 
-    public NamesCategoriesRecyclerViewAdapter(List<CategoriesItem> items, NamesCategoriesFragment.OnListFragmentInteractionListener listener) {
+    public NamesCategoriesRecyclerViewAdapter(List<Category> items, NamesCategoriesFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -39,7 +40,7 @@ public class NamesCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Nam
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mContentView.setText(mValues.get(position).getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +63,7 @@ public class NamesCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Nam
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public CategoriesItem mItem;
+        public Category mItem;
 
         public ViewHolder(View view) {
             super(view);
